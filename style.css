@@ -1,0 +1,75 @@
+:root {
+	--square: 450px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+}
+
+body {
+	font-family: 'Leckerli One', cursive;
+	/*padding: 24px;*/
+	background-color: #ffecec;
+	height: 100vh;
+	display: grid;
+	grid-template: 1fr 3fr 1fr / 1fr 2fr 1fr;
+}
+
+header, footer {
+	grid-column: 2 / 3;
+	text-align: center;
+	align-self: center;
+}
+
+header {
+	grid-row: 1 / 2;
+}
+
+footer {
+	grid-row: 3 / 4;
+}
+
+.btn-container {
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
+}
+
+.sketchpad {
+	grid-column: 2 / 3;
+	grid-row: 2 / 3;
+	background-color: #fff;
+	justify-self: center;
+	border: 1px solid black;
+	height: var(--square);
+	width: var(--square);
+}
+
+.btn-container {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.btn-container * {
+	font-family: inherit;
+	font-size: 24px;
+	padding: 0;
+	width: 200px;
+	height: 50px;
+	border-radius: 16px;
+	border:  1px solid black;
+}
+
+input[type=color] {
+	overflow: hidden;
+}
+
+input[type=range] {
+	color: #000;
+}
