@@ -11,18 +11,20 @@
 </head>
 <body>
 	<header>
-		<h1>Etch-a-Sketch</h1>
+		<h1 class="title">Etch-a-Sketch</h1>
 	</header>
-	<div class="btn-container">
-		<button>Clear</button>
-		<input type="color">
-		<button>GrayScale</button>
-		<button>Rainbow</button>
-		<input type="range">
-	</div>
-	<div class="sketchpad"></div>
+	<main>
+		<div class="btn-container">
+			<button>Clear</button>
+			<input type="color">
+			<button>GrayScale</button>
+			<button>Rainbow</button>
+			<input type="number" min="16" max="100" placeholder="16x16">
+		</div>
+		<div class="sketchpad"></div>
+	</main>
 	<footer>
-		<p>Created by Darnell. Vanilla JavaScript, HTML, and CSS. 2021</p>
+		<p class="footer-text">Created by Darnell. Vanilla JavaScript, HTML, and CSS. 2021</p>
 	</footer>
 </body>
 </html>
