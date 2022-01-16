@@ -64,8 +64,6 @@ function incGrayScale(hexStr) {
 	return nextRGB
 }
 
-window.addEventListener("resize", () => {init(cellByCell)})
-
 clearBtn.addEventListener("click", () => {init(cellByCell)})
 
 colorInput.addEventListener("change", (event) => {

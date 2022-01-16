@@ -1,5 +1,4 @@
 :root {
-	/*--square: 450px;*/
 	--square: clamp(250px, 500px, 80vw);
 	--rowByCol: 16;
 }
