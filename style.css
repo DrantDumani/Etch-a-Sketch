@@ -1,14 +1,15 @@
 :root {
 	/*--square: 450px;*/
 	--square: clamp(250px, 500px, 80vw);
+	--rowByCol: 16;
 }
 
 * {
-	box-sizing: border-box;
 }
 
 html, body {
 	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
@@ -22,14 +23,19 @@ header, footer {
 
 .title, .footer-text {
 	margin: 0;
-	padding: 32px 8px;
+	padding: 32px 20px;
 }
 
 .title {
 	font-size: 48px;
 }
 
+.footer-text {
+	font-size: 20px;
+}
+
 main {
+	padding: 0 8px;
 	display: flex;
 	flex-wrap: wrap-reverse;
 	gap: 40px;
@@ -37,8 +43,11 @@ main {
 }
 
 .sketchpad {
+	display: grid;
+	grid-template-columns: repeat(var(--rowByCol), calc(var(--square) / var(--rowByCol)));
+	grid-template-rows: repeat(var(--rowByCol), calc(var(--square) / var(--rowByCol)));
 	background-color: #fff;
-	border: 1px solid black;
+	border: 3px solid #514356;
 	height: var(--square);
 	width: var(--square);
 }
@@ -56,9 +65,14 @@ main {
 	padding: 0;
 	width: 200px;
 	height: 50px;
-	border: 1px solid black;
+	border: 1px solid #000;
 }
 
 .btn-container button:hover, .btn-container input[type=color]:hover {
 	transform: scale(1.1);
+}
+
+/*Without explicitly setting the bg-color of the cells, the grayscale function becomes buggy*/
+.cell {
+	background-color: rgb(255,255,255);
 }
