@@ -13,6 +13,13 @@ let grayScaleFlag = false
 let rainbowToggle = document.querySelector(".rainbow")
 let grayScaleToggle = document.querySelector(".grayscale")
 
+let dimLabel = document.querySelector(".dim-label")
+setLabel(numInput.value)
+
+function setLabel(value){
+	dimLabel.textContent = `${value}x${value}`
+}
+
 function checkRainbow(){
 	grayScaleFlag = false
 	rainbowFlag = true
@@ -29,7 +36,7 @@ function init(dimensions){
 	for (let row = 0; row < dimensions; row++){
 		for (let col = 0; col < dimensions; col++){
 			let cell = document.createElement("div")
-			cell.addEventListener("mouseenter", () => {
+			cell.addEventListener("pointerenter", () => {
 				let cellColor = ""
 				if (rainbowFlag) {
 					cellColor = setRandomColor()
@@ -72,18 +79,11 @@ colorInput.addEventListener("change", (event) => {
 	currentColor = event.target.value
 })
 
-numInput.addEventListener("change", (event) => {
+numInput.addEventListener("input", (event) => {
 	cellByCell = event.target.value
-	let max = Number(event.target.max)
-	let min = Number(event.target.min)
-	if (cellByCell > max || cellByCell < min || typeof(Number(cellByCell)) !== "number") 
-	{
-		return
-	}
-	else {
-		root.style.setProperty("--rowByCol", event.target.value)
-		init(cellByCell)
-	}
+	root.style.setProperty("--rowByCol", event.target.value)
+	setLabel(cellByCell)
+	init(cellByCell)
 })
 
 rainbowToggle.addEventListener("click", checkRainbow)
