@@ -1,4 +1,5 @@
 let root = document.documentElement
+let lastEl = null
 let cellByCell = Number(getComputedStyle(root).getPropertyValue("--rowByCol"))
 let sketchpad = document.querySelector(".sketchpad")
 let numInput = document.querySelector(".numOfCells")
@@ -30,25 +31,31 @@ function checkGrayScale(){
 	grayScaleFlag = true
 }
 
+sketchpad.addEventListener("pointermove", (event) => {
+	let elem = document.elementFromPoint(event.pageX - window.scrollX, event.pageY - window.scrollY)
+
+	if (elem !== lastEl && elem.classList.contains("cell")){
+		let cellColor = ""
+		if (rainbowFlag) {
+			cellColor = setRandomColor()
+        }
+        else if (grayScaleFlag){
+        	cellColor = incGrayScale(getComputedStyle(elem).backgroundColor)
+        }
+        else {
+        	cellColor = colorInput.value
+        }
+        elem.style.backgroundColor = cellColor
+        lastEl = elem
+	}
+})
+
 function init(dimensions){
 	let arrOfCells = []
 	
 	for (let row = 0; row < dimensions; row++){
 		for (let col = 0; col < dimensions; col++){
 			let cell = document.createElement("div")
-			cell.addEventListener("pointerenter", () => {
-				let cellColor = ""
-				if (rainbowFlag) {
-					cellColor = setRandomColor()
-				}
-				else if (grayScaleFlag){
-					cellColor = incGrayScale(getComputedStyle(cell).backgroundColor)
-				}
-				else {
-					cellColor = colorInput.value
-				}
-				cell.style.backgroundColor = cellColor
-			})
 			cell.classList.add("cell")
 			arrOfCells.push(cell)
 		}
