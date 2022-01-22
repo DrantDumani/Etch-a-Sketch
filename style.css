@@ -3,9 +3,6 @@
 	--rowByCol: 16;
 }
 
-* {
-}
-
 html, body {
 	margin: 0;
 	box-sizing: border-box;
@@ -82,4 +79,5 @@ main {
 /*Without explicitly setting the bg-color of the cells, the grayscale function becomes buggy*/
 .cell {
 	background-color: rgb(255,255,255);
+	touch-action: none;
 }
